@@ -43,10 +43,11 @@ Version 0.1
 
 \section{Purpose of the document}
 
-This document is aimed at describing the process to execute the test suite necessary to characterize new Rubin data releases, in the context of the DESC.
+This document is aimed at describing the process to execute the test suite necessary to characterize new Rubin data releases, in the context of the DESC. It covers the following points:
 
 \begin{itemize}
-\item The tests, methods, tools and criteria (where applicable) to characterize and validate the Rubin dataset, for the purposes of DESC analyses.
+\item Describe the purpose of having an additional layer of characterization tests, besides those coming from Rubin.
+\item The list of tests, methods, tools and criteria (where applicable) to characterize and validate the Rubin dataset, for the purposes of DESC analyses.
 \item The actual procedure for the execution of tests and inspection.
 \end{itemize}
 
@@ -70,16 +71,16 @@ It is expected that the Rubin project will provide, alongside with the data itse
 
 A structured compilation of all the relevant tests and inspections will be finally recorded on static Test Execution Reports, which should contain all the information necessary for provenance and regression purposes.
 
-At the same time, it is noteworthy to consider that the execution of these tests are easily run and re-run, and do not require a significant overhead in terms of execution and SRV (DESC) scientists' time, so as to make this framework useful as a quick assessment. A final overall evaluation of the data quality for a 'frozen' version of the data release can be done with a more comprehensive approach, as a final report usable as reference for downstream analyses. Therefore, any science done would be able to use the corresponding TER metrics and references, and therefore minimize any ambiguities as for what version of the data or catalog content is used.
+At the same time, it is noteworthy to consider that the execution of these tests are easily run and re-run, and do not require a significant overhead in terms of execution and SRV (DESC) scientists' time, so as to make this framework useful as a quick assessment. A final overall evaluation of the data quality for a 'frozen' version of the data release can be done with a more comprehensive approach, as a final report usable as reference for downstream analyses. Therefore, any science done would be able to use the corresponding TER metrics and references, and minimize any ambiguities as to which version of the data or catalog content is used.
 
 The overall characterization framework is sketched in Figure \ref{fig:srvplanning} and summarized below:
 
 \begin{enumerate}
-	\item Data is made visible for an official Release at the Science Platform. It is foreseen that at some point part of this data is copied to NERSC. At this point, \textbf{inspection tests} through Jupyter notebooks can be performed quickly to assess overall data health. Examples: RA,DEC coverage; histograms of flags; other simple histograms of the main photometric quantities. It is interesting to compare the results are compatible at the Rubin Science Platform and at NERSC. These inspection \textit{could} be complemented by tests being run through other tools, if that seems to be more manageable (examples: running TOPCAT and acquiring data from the Rubin Science Platform through TAP, using Lite IDACs capabilities such as those from Hadoop frameworks holding a version of the data).
+	\item Data is made visible for an official Release at the Science Platform. It is foreseen that part of this data is copied to NERSC. At this point, \textbf{inspection tests} through Jupyter notebooks can be performed quickly to assess overall data health. Examples: RA,DEC coverage; histograms of flags; other simple histograms of the main photometric quantities. It is interesting to verify whether the results are compatible at the Rubin Science Platform and at NERSC. These inspection \textit{could} be complemented by tests being run through other tools, if that seems to be more manageable (examples: running TOPCAT and acquiring data from the Rubin Science Platform through TAP, using Lite IDACs capabilities such as those from Hadoop frameworks holding a version of the data).
 	\item At the same time, the presence of \textbf{adequate documentation} from Rubin side for DESC purposes, can be inspected, complementing it when appropriate or reporting back to the project.
 	\item We should strive for the \textbf{main software tests to be run through a single framework (DESCQA)} as much as possible. These tests will be described in this document.
-	\item It is possible however, that for practical purposes some tests are not run through DESCQA (already embedded in other frameworks, coming from downstream analyses). SRV has to analyze when that happens how and if to include them in the final report, ensuring consistency of the data sets used for the tests, with respect to those ran at DESCQA.
-	\item Finally, besides the TER static reporting, SRV will explore the available dynamical visualization utilities for the test runs and re-runs that will inform the contents of the TER.
+	\item It is possible however, that for practical purposes \textbf{some tests are not run through DESCQA} (already embedded in other frameworks, coming from downstream analyses). SRV has to analyze when that happens how and if to include them in the final report, ensuring consistency of the data sets used for the tests, with respect to those ran at DESCQA.
+	\item Finally, besides the TER static reporting, SRV will explore the available dynamical \textbf{visualization utilities} for the test runs and re-runs that will inform the contents of the TER.
 \end{enumerate}
 
 \begin{figure}[h]
