@@ -103,7 +103,7 @@ Here we include an overall view of the software involved in a single test run of
 
 \subsection{Software tools}
 
-A list of references to the software used. The Test Execution Reports will be filled out with the actual versions and other specifics.
+A list of references to the software used. The Test Execution Reports will be filled out with the actual versions and other specifics. These will be mainly pointers to GitHub repos holding the code to be executed.
 
 \subsection{Data sets and formats}
 
@@ -111,7 +111,7 @@ An explanation of the characteristics of the model of the data set being tested.
 
 \subsubsection{DC2}
 
-DC2 coadd catalogs is available as flat parquet files at NERSC.
+DC2 coadd catalogs is available as flat parquet files at NERSC. The TER should include the actual location and details of the data that was used specifically.
 
 \subsubsection{DP0.2}
 
@@ -123,9 +123,15 @@ TBC
 
 \section{Characterization cases and procedures}
 
-\subsection{Characterization of data set}
+\subsection{Quick inspection notebooks}
+Interactive notebooks to be included here that complement or substitute DESCQA executions, that could be run on NERSC and RSP. Also CosmoHub could be an option if the data is available.
 
-\subsubsection{TC1 - Inspection of catalog columns}
+\subsection{Documentation inspection}
+Describe what documentation should be present to understand the data.
+
+\subsection{Characterization of data set through DESCQA}
+
+\subsubsection{TC1 - Checks on catalog columns}
 \textbf{Purpose:} 
 
 Verify that the catalogs contain the columns we need.
@@ -139,24 +145,38 @@ Another part can check for NaNs or crazy values in the relevant columns (similar
 
 \textbf{Procedure:} 
 
-Describe how we actually go about running this (./descqarun --t ColumnInspection --c DC2 etc.)
+Describe how we actually go about running this (./descqarun --t ColumnInspection --c DC2 etc.). Inputs and outputs.
 
-\subsubsection{TC2 - Basic recursive characterization}
+\subsubsection{TC2 - Statistics on sample selection}
+\textbf{Purpose:} 
+
+Compute the number of objects after various subselections, based on Rubin or DESC flags or quantity filters.
+
+\textbf{Strategy:} 
+
+Run a count test on coadd catalogs, and build a bar plot for each sample after passing subsequent cuts.
+
+\textbf{Procedure:} 
+
+Describe how we actually go about running this (./descqarun --t SampleStatistics --c DC2 etc.)
+
+
+\subsubsection{TC3 - Basic recursive characterization}
 \textbf{Purpose:} 
 
 Run a general 'readiness' test on coadd catalogs, to verify that there aren't any significant issues in data. 
 
 \textbf{Strategy:} 
 
-Execute an interactive job over the whole data set of the CoreChecks test from DESCQA.
+Execute an interactive job over the whole data set of the CoreChecks test from DESCQA. These should be done on the overall data set and on a basic galaxy (or star, for DKM WG) sample selection.
 
 The test currently comprises the following checks:
 \begin{itemize}
-	\item RA,DEC scatter plot
-	\item Differential magnitude histograms in all bands, for PSF, aperture and model magnitudes.
-	\item Magnitude vs magnitude error scatter plots of the above.
-	\item Color-color plots (specifics TBC)
-	\item Magnitude vs size plots fpr PSF-like objects
+	\item RA,DEC scatter plot. Is the footprint in the range expected by the associated documentation.
+	\item Differential magnitude histograms in all bands, for PSF, aperture and model magnitudes. Is the depth in the range expected by the associated documentation.
+	\item Magnitude vs magnitude error scatter plots of the above. Is the depth in the range expected by the associated documentation.
+	\item Color-color plots (specifics TBC). Is the stellar locus clearly visible, extended sources in the adequate range according to the redshift expected from the associated documentation.
+	\item Magnitude vs size plots fpr PSF-like objects. Are there significant outliers or biases.
 	\item PSF ellipticity whisker plot
 	\item Source e1,e2 histogram (TBC, requires some source selection)
 \end{itemize}
@@ -166,14 +186,8 @@ The test currently comprises the following checks:
 Describe how we actually go about running this (./descqarun --t CoreChecks --c DC2 etc.)
 %\textbf{Regression:}
 
-\subsubsection{TC3 - Notebooks}
-Interactive notebooks to be included here that complement or substitute DESCQA executions, that could be run on NERSC and RSP. Also CosmoHub could be an option if the data is available.
-
-\subsection{TC4 - Inspection of external tests on same data set}
+\subsection{Inspection of external tests on same data set}
 Add details of other test runs on the same data set that will complement this report: RAIL, faro, other analysis WG results.
-
-\subsection{Inspection of available documentation}
-This requires reporting where the documentation of the data release is available.
 
 \subsection{Validation tests on small areas or subsamples, replicating previous scientific results}
 
