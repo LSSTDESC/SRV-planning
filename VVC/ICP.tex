@@ -192,7 +192,7 @@ The test currently comprises the following checks:
 \textbf{Procedure:} 
 
 \begin{enumerate}
-	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell --qos=interactive -t 02:00:00
+	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell -{}-qos=interactive -t 02:00:00
 	\item From the descqa directory (check version and state on TER), execute ./run\_master\_parallel.sh -v -c [catalog name] -t srv\_readiness. 
 	\item Fill in TER for code version and tested catalog.
 \end{enumerate}
@@ -220,7 +220,7 @@ The test currently comprises the following checks:
 \textbf{Procedure:} 
 
 \begin{enumerate}
-	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell --qos=interactive -t 02:00:00
+	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell -{}-qos=interactive -t 02:00:00
 	\item From the descqa directory (check version and state on TER), execute ./run\_master\_parallel.sh -v -c [catalog name] -t srv\_shear. 
 	\item Fill in TER for code version and tested catalog.
 \end{enumerate}
@@ -237,7 +237,7 @@ Execute an interactive job over the whole data set of the srv\_ngals test from D
 \textbf{Procedure:} 
 
 \begin{enumerate}
-	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell --qos=interactive -t 02:00:00
+	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell -{}-qos=interactive -t 02:00:00
 	\item From the descqa directory (check version and state on TER), execute ./run\_master\_parallel.sh -v -c [catalog name] -t srv\_ngals. 
 	\item Fill in TER for code version and tested catalog.
 \end{enumerate}
@@ -252,7 +252,7 @@ Execute an interactive job over the whole data set of the ExternalTest test from
 \textbf{Procedure:} 
 
 \begin{enumerate}
-	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell --qos=interactive -t 02:00:00
+	\item Create a memory allocation on a NERSC node: salloc -N 1 -C haswell -{}-qos=interactive -t 02:00:00
 	\item Configure the ExternalTest yaml file to point to the TXPipe directory to be read.
 	\item From the descqa directory (check version and state on TER), execute ./run\_master\_parallel.sh -v -c [catalog name] -t ExternalTest. 
 	\item Fill in TER for code version and tested catalog.
