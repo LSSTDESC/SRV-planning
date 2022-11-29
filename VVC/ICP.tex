@@ -4,11 +4,12 @@
 %	PACKAGES AND DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[12pt, a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
 \usepackage{graphicx} % Required for the inclusion of images
 \usepackage{natbib} % Required to change bibliography style to APA
 \usepackage{amsmath} % Required for some math elements 
+\usepackage[left=23mm, right=23mm]{geometry}
 
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
@@ -73,7 +74,7 @@ The overall objective of the inspection and characterization procedure is to \te
 	\item Assess issues with the data release, for DESC purposes (days time scale)
 \end{itemize}
 
-It is expected that the Rubin project will provide, alongside with the data itself, documentation and/or reports on the data quality, conducted by their own Verification and Validation tests. With the framework that SRV is providing here, the intention is to cater to the interests of the DESC ('fill the gaps'), in case some tests are missing from those provided by Rubin, evaluating the characteristics of 'typical' DESC science samples, testing DESC only value added products, and rechecking some basic metrics in case the data source is different than that of the Rubin Science Platform (e.g., if DESC uses a subset of the data in a different platform or format at NERSC).
+It is expected that the Rubin project will provide, alongside with the data itself, documentation and/or reports on the data quality, conducted by their own Verification and Validation tests, through the {\tt analysis\_tools} package. With the framework that SRV is providing here, the intention is to cater to the interests of the DESC ('fill the gaps'), in case some tests are missing from those provided by Rubin, evaluating the characteristics of 'typical' DESC science samples, testing DESC only value added products, and rechecking some basic metrics in case the data source is different than that of the Rubin Science Platform (e.g., if DESC uses a subset of the data in a different platform or format at NERSC).
 
 A structured compilation of all the relevant tests and inspections will be finally recorded on static Test Execution Reports, which should contain all the information necessary for provenance and regression purposes.
 
@@ -82,7 +83,7 @@ At the same time, it is noteworthy to consider that the execution of these tests
 The overall characterization framework is sketched in Figure \ref{fig:srvplanning} and summarized below. The tests referred will be described in this document:
 
 \begin{enumerate}
-	\item Data is made visible for an official Release at the Science Platform. It is foreseen that part of this data is copied to NERSC. At this point, \textbf{inspection tests} through Jupyter notebooks can be performed quickly to assess overall data health. Examples: RA,DEC coverage; histograms of flags; other simple histograms of the main photometric quantities. It is interesting to verify whether the results are compatible at the Rubin Science Platform and at NERSC. This inspection \textit{could} be complemented by tests being run through other tools, if that seems to be more manageable (examples: running TOPCAT and acquiring data from the Rubin Science Platform through TAP, using Lite IDACs capabilities such as those from Hadoop frameworks holding a version of the data). In all cases, the tests have to be formalized to ensure proper provenance.
+	\item Data is made visible for an official Release at the Science Platform. It is foreseen that part of this data is copied to NERSC. At this point, \textbf{inspection tests} through Jupyter notebooks can be performed quickly to assess overall data health. Examples: RA,DEC coverage; histograms of flags; other simple histograms of the main photometric quantities. It would be interesting to verify whether the results are compatible between the Rubin Science Platform and NERSC. This inspection \textit{could} be complemented by tests being run through other tools, if that seems to be more manageable (examples: running TOPCAT and acquiring data from the Rubin Science Platform through TAP, using Lite IDACs capabilities such as those from Hadoop frameworks holding a version of the data). In all cases, the tests have to be formalized to ensure proper provenance.
 	\item At the same time, the presence of \textbf{adequate documentation} from Rubin side for DESC purposes, can be inspected, complementing it when appropriate or reporting back to the project.
 	\item \textbf{Main software tests will be run through a single framework (DESCQA)}.
 	\item Tests already embedded in pre-existing frameworks, or coming from downstream analyses are included through DESCQA in the final report, ensuring consistency of the data sets used for the tests, with respect to those developed specifically in the previous point.
@@ -97,8 +98,6 @@ The overall characterization framework is sketched in Figure \ref{fig:srvplannin
 \end{center}
 \end{figure}
 
-
-
 %----------------------------------------------------------------------------------------
 %	SECTION 3 -- the software and other tools are described
 %----------------------------------------------------------------------------------------
@@ -111,7 +110,7 @@ Here we include an overall view of the software involved in a single test run of
 
 \textit{A list of references to the software used. The Test Execution Reports will be filled out with the actual versions and other specifics. These will be mainly pointers to GitHub repos holding the code to be executed.}
 
-The main software tool is based on DESCQA\footnote{https://github.com/LSSTDESC/descqa}, a framework to validate simulated galaxy catalogs.
+The main software tool is based on DESCQA\footnote{https://github.com/LSSTDESC/descqa}, a framework to validate simulated galaxy catalogs. 
 
 \subsection{Data sets and formats}
 
